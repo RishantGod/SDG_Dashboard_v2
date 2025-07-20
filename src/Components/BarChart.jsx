@@ -43,7 +43,7 @@ export default function BarChart() {
 
     // * 1. Getting all the data and accessor functions 
 
-    const allTotalsObj = calculateTotal(data);
+    const { totals: allTotalsObj, grandTotals } = calculateTotal(data);
     // Convert object to array for easier manipulation
     const allTotals = Object.entries(allTotalsObj).map(([id, values]) => ({
         id,

@@ -17,7 +17,7 @@ import goal15 from '../assets/goal-icons/15.png';
 import goal16 from '../assets/goal-icons/16.png';
 import goal17 from '../assets/goal-icons/17.png';
 
-export default function SDGBox(){
+export default function SDGBox({ onSDGHover, onSDGLeave }){
     const goalIcons = [
         goal01, goal02, goal03, goal04, goal05, goal06, goal07, goal08, goal09,
         goal10, goal11, goal12, goal13, goal14, goal15, goal16, goal17
@@ -25,15 +25,24 @@ export default function SDGBox(){
 
     return (
         <div className='box'>
-            {goalIcons.map((icon, index) => (
-                <div key={index + 1} className='goal-container'>
-                    <img 
-                        className="goal" 
-                        src={icon} 
-                        alt={`SDG Goal ${index + 1}`}
-                    />
-                </div>
-            ))}
+            {goalIcons.map((icon, index) => {
+                const sdgId = index + 1; // SDG IDs are 1-based
+                return (
+                    <div 
+                        key={sdgId} 
+                        className='goal-container'
+                        onMouseEnter={() => onSDGHover(sdgId)}
+                        onMouseLeave={onSDGLeave}
+                        style={{ cursor: 'pointer' }}
+                    >
+                        <img 
+                            className="goal" 
+                            src={icon} 
+                            alt={`SDG Goal ${sdgId}`}
+                        />
+                    </div>
+                );
+            })}
         </div>
     )
 }

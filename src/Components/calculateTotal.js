@@ -1,5 +1,10 @@
 export function calculateTotal(data) {
     const totals = {};
+    let grandTotals = {
+        studentParticipation: 0,
+        casProjects: 0,
+        fundsRaised: 0
+    };
 
     data.forEach(item => {
         const studentParticipationTotal = Object.values(item.StudentParticipation).reduce((sum, value) => sum + value, 0);
@@ -12,7 +17,12 @@ export function calculateTotal(data) {
             fundsRaised: fundsRaisedTotal,
             color: item.color,
         };
+
+        // Add to grand totals
+        grandTotals.studentParticipation += studentParticipationTotal;
+        grandTotals.casProjects += casProjectsTotal;
+        grandTotals.fundsRaised += fundsRaisedTotal;
     });
 
-    return totals;
+    return { totals, grandTotals };
 }
