@@ -39,9 +39,7 @@ export default function Dashboard(){
   const displayDetails = currentSDGData ? {
     action: currentSDGData.action,
     description: currentSDGData.description,
-    image: currentSDGData.image.startsWith('./') 
-      ? currentSDGData.image.replace('./', '/') 
-      : currentSDGData.image, // Convert ./assets/ to /assets/
+    image: currentSDGData.image, // Keep the original path - Vite will handle it
     leader: currentSDGData.leader,
     startDate: currentSDGData.startDate,
     location: currentSDGData.location
@@ -62,7 +60,7 @@ export default function Dashboard(){
     <>
     <div className="header-section">
       <img 
-        src="/assets/instituition_logo.png" 
+        src="assets/instituition_logo.png" 
         alt="Institutional Logo" 
         className="institutional-logo"
       />
