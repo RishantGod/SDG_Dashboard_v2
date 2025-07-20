@@ -18,25 +18,42 @@ html,body{
   text-align: center;
 }
 
-
-.top-section {
-  width: 100%;
-  display:flex;
+.dashboard {
+  display: flex;
   justify-content: space-between;
+  
+}
+
+.left-section {
+  width: calc(60% - 1rem);
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   align-items: center;
   gap: 2rem;
   
 }
 
-.bottom-section{
-  width:100%;
+.right-section{
+  width: calc(40% - 1rem);
   display:flex;
+  flex-direction: column;
   justify-content: space-between;
+  /* gap: 1rem; */
+}
+
+.ban-section{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 
 .ban {
-  width: 33%;
+  width: calc(33% - 1rem);
   background-color: #fff;
   display:flex;
   justify-content: start;
@@ -49,24 +66,54 @@ html,body{
 }
 
 .ban-text {
-  
-
-  /* padding: 5rem; */
   background-color: #fff;
 }
 
-.bar-chart {
+.bar-chart-container {
+  width: 100%;
+  height: 450px; /* Set desired height */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 1rem;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+}
+
+.chart-title {
+  margin: 0 0 1rem 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.bar-chart {
+  width: 100%;
+  flex: 1; /* Take remaining space after title */
+  display: block;
+}
+
+/* Style the axes */
+.bar-chart .x-axis path,
+.bar-chart .y-axis path,
+.bar-chart .x-axis line,
+.bar-chart .y-axis line {
+  stroke: #333 !important;
+  stroke-width: 2px !important;
+  shape-rendering: crispEdges;
+}
+
+.bar-chart .x-axis text,
+.bar-chart .y-axis text {
+  fill: #333 !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
 }
 
 .box{
-  width: calc(60% - 1rem);
+  width: 100%;
   display: flex;
   background-color: rgba(231, 220, 220, 0.889);
   border-radius: 5px;
@@ -91,7 +138,8 @@ html,body{
 }
 
 .description-box{
-  width: calc(40% - 1rem);
+  width: 100%;
+  height: 50%;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -114,4 +162,3 @@ html,body{
   justify-content: space-around;
   gap: 1rem; /* Add gap as fallback */
 }
-

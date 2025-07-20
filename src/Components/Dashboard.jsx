@@ -7,16 +7,20 @@ import DescriptionBox from './DescriptionBox';
 export default function Dashboard(){
   return (
     <div className="dashboard">
-       <div className='top-section'>
+       <div className='left-section'>
+        <div className='ban-section'>
             <BAN />
             <BAN />
             <BAN />
-            <BarChart />
-       </div>
-       <div className='bottom-section'>
-            <SDGBox />
-            <DescriptionBox />
         </div>
+        <div className='sdg-section'>
+            <SDGBox />
+        </div>
+       </div>
+       <div className='right-section'>
+            <BarChart />
+            <DescriptionBox />
+       </div>
     </div>
   )
 }
