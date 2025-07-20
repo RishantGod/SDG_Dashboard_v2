@@ -15,11 +15,14 @@ export default function Dashboard(){
   // Calculate totals for both individual SDGs and grand totals
   const { totals, grandTotals } = calculateTotal(data);
   
-  // State to track which SDG is being hovered (null means show grand totals)
-  const [hoveredSDG, setHoveredSDG] = useState(null);
+  // State to track which SDG is being selected (null means show grand totals)
+  const [selectedSDG, setSelectedSDG] = useState(null);
+  
+  // State to track which metric is selected for the bar chart
+  const [selectedMetric, setSelectedMetric] = useState('studentParticipation');
   
   // Determine which values to display in BAN components
-  const displayTotals = hoveredSDG ? totals[hoveredSDG] : grandTotals;
+  const displayTotals = selectedSDG ? totals[selectedSDG] : grandTotals;
 
   // Default description details when no SDG is hovered
   const defaultDetails = {
@@ -32,7 +35,7 @@ export default function Dashboard(){
   };
 
   // Get the current SDG data or use default
-  const currentSDGData = hoveredSDG ? data.find(item => item.id === hoveredSDG) : null;
+  const currentSDGData = selectedSDG ? data.find(item => item.id === selectedSDG) : null;
   const displayDetails = currentSDGData ? {
     action: currentSDGData.action,
     description: currentSDGData.description,
@@ -44,27 +47,19 @@ export default function Dashboard(){
     location: currentSDGData.location
   } : defaultDetails;
 
-  // Handlers for SDG hover
-  const handleSDGHover = (sdgId) => {
-    setHoveredSDG(sdgId);
+  // Handlers for SDG click
+  const handleSDGClick = (sdgId) => {
+    // If clicking the same SDG, deselect it; otherwise select the new one
+    setSelectedSDG(selectedSDG === sdgId ? null : sdgId);
   };
 
-  const handleSDGLeave = () => {
-    setHoveredSDG(null);
+  // Handler for BAN click to change metric
+  const handleMetricClick = (metric) => {
+    setSelectedMetric(metric);
   };
 
   return (
     <>
-    <div className="sdg-color-bar">
-      {data.map((sdg) => (
-        <div
-          key={sdg.id}
-          className="sdg-color-cell"
-          style={{ backgroundColor: sdg.color }}
-          title={`SDG ${sdg.id}: ${sdg.action}`}
-        />
-      ))}
-    </div>
     <h1 className='dashboard-title'>Sustainable Development Goals Dashboard</h1>
       <div className="dashboard">
        <div className='left-section'>
@@ -73,33 +68,40 @@ export default function Dashboard(){
             imgSrc={studentParticipationIcon}
             value={displayTotals.studentParticipation}
             label="Student Participation"
+            isSelected={selectedMetric === 'studentParticipation'}
+            onClick={() => handleMetricClick('studentParticipation')}
             />
             <BAN 
             imgSrc={casProjectIcon}
             value={displayTotals.casProjects}
             label="CAS Projects"
+            isSelected={selectedMetric === 'casProjects'}
+            onClick={() => handleMetricClick('casProjects')}
             />
             <BAN 
             imgSrc={fundsRaisedIcon}
             value={`$${displayTotals.fundsRaised.toLocaleString()}`}
             label="Funds Raised"
+            isSelected={selectedMetric === 'fundsRaised'}
+            onClick={() => handleMetricClick('fundsRaised')}
             />
         </div>
         <div className='sdg-section'>
             <SDGBox 
-              onSDGHover={handleSDGHover}
-              onSDGLeave={handleSDGLeave}
+              onSDGClick={handleSDGClick}
+              selectedSDG={selectedSDG}
             />
         </div>
        </div>
        <div className='right-section'>
-            {hoveredSDG ? (
+            {selectedSDG ? (
               <LineChart 
                 sdgData={currentSDGData} 
-                sdgId={hoveredSDG}
+                sdgId={selectedSDG}
+                selectedMetric={selectedMetric}
               />
             ) : (
-              <BarChart />
+              <BarChart selectedMetric={selectedMetric} />
             )}
             <DescriptionBox 
               illustration={displayDetails.image}

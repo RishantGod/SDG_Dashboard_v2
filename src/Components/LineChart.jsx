@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
-export default function LineChart({ sdgData, sdgId }) {
+export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentParticipation' }) {
     const containerRef = useRef();
     const [dimensions, setDimensions] = useState({
         width: 500,
@@ -42,10 +42,35 @@ export default function LineChart({ sdgData, sdgId }) {
     // * 1. Getting all the data and accessor functions 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     
+    // Get the correct data property based on selected metric
+    const getDataProperty = () => {
+        switch(selectedMetric) {
+            case 'casProjects':
+                return 'CASProjects';
+            case 'fundsRaised':
+                return 'FundsRaised';
+            default:
+                return 'StudentParticipation';
+        }
+    };
+
+    // Get chart title based on selected metric
+    const getChartTitle = () => {
+        switch(selectedMetric) {
+            case 'casProjects':
+                return `SDG ${sdgId} - Monthly CAS Projects`;
+            case 'fundsRaised':
+                return `SDG ${sdgId} - Monthly Funds Raised`;
+            default:
+                return `SDG ${sdgId} - Monthly Student Participation`;
+        }
+    };
+    
     // Convert monthly data to array format for easier manipulation
+    const dataProperty = getDataProperty();
     const lineData = months.map(month => ({
         month,
-        value: sdgData.StudentParticipation[month] || 0
+        value: sdgData[dataProperty][month] || 0
     }));
 
     const getMonth = d => d.month;
@@ -73,13 +98,22 @@ export default function LineChart({ sdgData, sdgId }) {
 
     const linePath = lineGenerator(lineData);
 
-    // * 5. Create axis ticks data
+    // * 5. Create area path using D3 area generator
+    const areaGenerator = d3.area()
+        .x(d => xScale(getMonth(d)))
+        .y0(boundedHeight) // Bottom of the area (x-axis)
+        .y1(d => yScale(getValue(d))) // Top of the area (data points)
+        .curve(d3.curveMonotoneX); // Same curve as line
+
+    const areaPath = areaGenerator(lineData);
+
+    // * 6. Create axis ticks data
     const xAxisTicks = xScale.domain();
     const yAxisTicks = yScale.ticks(5);
 
     return (
         <div ref={containerRef} className="bar-chart-container">
-            <h3 className="chart-title">SDG {sdgId} - Monthly Student Participation</h3>
+            <h3 className="chart-title">{getChartTitle()}</h3>
             <svg 
                 className="bar-chart"
                 width={dimensions.width}
@@ -159,6 +193,16 @@ export default function LineChart({ sdgData, sdgId }) {
                         ))}
                     </g>
 
+                    {/* Area Fill */}
+                    <path
+                        d={areaPath}
+                        fill={sdgData.color || "#3498db"}
+                        fillOpacity="0.3"
+                        style={{
+                            transition: 'd 0.6s ease'
+                        }}
+                    />
+
                     {/* Line Path */}
                     <path
                         d={linePath}
@@ -167,6 +211,9 @@ export default function LineChart({ sdgData, sdgId }) {
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        style={{
+                            transition: 'd 0.6s ease'
+                        }}
                     />
 
                     {/* Data Points */}
@@ -179,6 +226,9 @@ export default function LineChart({ sdgData, sdgId }) {
                             fill={sdgData.color || "#3498db"}
                             stroke="#fff"
                             strokeWidth="2"
+                            style={{
+                                transition: 'cx 0.6s ease, cy 0.6s ease'
+                            }}
                         />
                     ))}
                 </g>

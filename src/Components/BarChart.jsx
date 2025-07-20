@@ -3,8 +3,9 @@ import * as d3 from 'd3';
 import data from '../data.json'; // Assuming data is in JSON format
 import { calculateTotal } from './calculateTotal.js';
 
-export default function BarChart() {
+export default function BarChart({ selectedMetric = 'studentParticipation' }) {
     const containerRef = useRef();
+    const [isInitialRender, setIsInitialRender] = useState(true);
     const [dimensions, setDimensions] = useState({
         width: 500,
         height: 600,
@@ -37,6 +38,14 @@ export default function BarChart() {
         return () => window.removeEventListener('resize', updateDimensions);
     }, []);
 
+    // Handle initial render flag
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsInitialRender(false);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     // Calculate bounded dimensions
     const boundedWidth = dimensions.width - dimensions.marginLeft - dimensions.marginRight;
     const boundedHeight = dimensions.height - dimensions.marginTop - dimensions.marginBottom;
@@ -55,17 +64,53 @@ export default function BarChart() {
     const getFundsRaised = d => d.fundsRaised;
     const getColor = d => d.color;
 
+    // Dynamic accessor function based on selected metric
+    const getMetricValue = d => {
+        switch(selectedMetric) {
+            case 'casProjects':
+                return getCasProjects(d);
+            case 'fundsRaised':
+                return getFundsRaised(d);
+            default:
+                return getStudentParticipation(d);
+        }
+    };
+
+    // Dynamic chart title based on selected metric
+    const getChartTitle = () => {
+        switch(selectedMetric) {
+            case 'casProjects':
+                return 'CAS Projects by SDG';
+            case 'fundsRaised':
+                return 'Funds Raised by SDG';
+            default:
+                return 'Student Participation by SDG';
+        }
+    };
+
+    // Dynamic y-axis label based on selected metric
+    const getYAxisLabel = () => {
+        switch(selectedMetric) {
+            case 'casProjects':
+                return 'Number of CAS projects';
+            case 'fundsRaised':
+                return 'Amount of funds raised';
+            default:
+                return 'Number of students';
+        }
+    };
+
     // * 3. Create Scales using D3 (for calculations only)
 
     // xScale for the bar chart
     const xScale = d3.scaleBand()
         .domain(allTotals.map(d => String(d.id)))
         .range([0, boundedWidth])
-        .padding(0.7);
+        .padding(0.6);
 
     // yScale for the bar chart
     const yScale = d3.scaleLinear()
-        .domain([0, d3.max(allTotals, d => d.studentParticipation)])
+        .domain([0, d3.max(allTotals, d => getMetricValue(d))])
         .range([boundedHeight, 0]);
 
     // * 4. Create axis ticks data
@@ -74,7 +119,7 @@ export default function BarChart() {
 
     return (
         <div ref={containerRef} className="bar-chart-container">
-            <h3 className="chart-title">Student Participation by SDG</h3>
+            <h3 className="chart-title">{getChartTitle()}</h3>
             <svg 
                 className="bar-chart"
                 width={dimensions.width}
@@ -92,6 +137,18 @@ export default function BarChart() {
                             stroke="#333"
                             strokeWidth="2"
                         />
+                        {/* Y axis label */}
+                        <text
+                            x={-50}
+                            y={boundedHeight / 2}
+                            textAnchor="middle"
+                            fontSize="14"
+                            fontWeight="bold"
+                            fill="#333"
+                            transform={`rotate(-90, -50, ${boundedHeight / 2})`}
+                        >
+                            {getYAxisLabel()}
+                        </text>
                         {/* Y axis ticks and labels */}
                         {yAxisTicks.map(tick => (
                             <g key={tick}>
@@ -155,16 +212,28 @@ export default function BarChart() {
                     </g>
 
                     {/* Bars */}
-                    {allTotals.map((item) => (
-                        <rect
-                            key={item.id}
-                            x={xScale(String(item.id))}
-                            y={yScale(getStudentParticipation(item))}
-                            width={xScale.bandwidth()}
-                            height={boundedHeight - yScale(getStudentParticipation(item))}
-                            fill={getColor(item)}
-                        />
-                    ))}
+                    {allTotals.map((item) => {
+                        const barHeight = boundedHeight - yScale(getMetricValue(item));
+                        const barY = yScale(getMetricValue(item));
+                        
+                        return (
+                            <rect
+                                key={item.id}
+                                x={xScale(String(item.id))}
+                                y={isInitialRender ? boundedHeight : barY}
+                                width={xScale.bandwidth()}
+                                height={isInitialRender ? 0 : barHeight}
+                                fill={getColor(item)}
+                                stroke="black"
+                                strokeWidth="1"
+                                style={{
+                                    transition: isInitialRender 
+                                        ? 'height 0.8s ease-out 0.1s, y 0.8s ease-out 0.1s' 
+                                        : 'height 0.6s ease, y 0.6s ease'
+                                }}
+                            />
+                        );
+                    })}
                 </g>
             </svg>
         </div>

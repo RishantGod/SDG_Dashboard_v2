@@ -16,42 +16,17 @@ html,body{
 #root, .app {
   width: 100%;
   height: 100%;
-  margin: 0; /* Remove top margin */
-  padding: 0 1rem; /* Keep horizontal padding only */
+  margin: 0; 
+  padding: 0 1rem; 
   text-align: center;
 }
 
-.sdg-color-bar {
-  width: 100%;
-  height: 20px;
-  display: flex;
-  margin: 0 0 1rem 0; /* No margin to stick to top */
-  border: 2px solid #333;
-  border-radius: 4px;
-  overflow: hidden;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.sdg-color-cell {
-  flex: 1;
-  height: 100%;
-  transition: all 0.3s ease;
-}
-
-.sdg-color-cell:hover {
-  transform: scaleY(1.5);
-  z-index: 10;
-  position: relative;
-}
-
 .dashboard-title {
-  text-align: left;
+  text-align: center;
   font-size: 32px;
   font-weight: bold;
   color: #333;
-  margin: 2rem 0 1rem 0; /* Add top margin back just for the title */
+  margin: 1rem 0 0.5rem 0; /* Reduced margins from 2rem 0 1rem 0 */
 }
 
 .dashboard {
@@ -81,7 +56,7 @@ html,body{
 
 .ban-section{
   width: 100%;
-  height: 300px; /* Increased height for more square-like BANs */
+  height: 260px; /* Reduced height from 300px to 260px */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,6 +75,20 @@ html,body{
   align-items: center;
   gap: 1rem;
   padding: 2rem; /* Increased padding for better proportions */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ban:hover {
+  border-color: #007acc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ban.selected {
+  border-color: #007acc;
+  border-width: 3px;
+  box-shadow: 0 0 15px rgba(0, 122, 204, 0.3);
+  background-color: #f8fcff;
 }
 
 .ban-icon {
@@ -171,18 +160,22 @@ html,body{
   border: 1px solid #ccc;
   justify-content: center;
   align-items: center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 
-/* When any goal container is hovered, fade out all goal containers */
-.box:hover .goal-container {
-  opacity: 0.3;
+.goal-container:hover {
+  transform: scale(1.05);
+  border-color: #007acc;
 }
 
-/* But keep the currently hovered goal container at full opacity */
-.box:hover .goal-container:hover {
-  opacity: 1;
+.goal-container.selected {
+  border-color: #007acc;
+  border-width: 3px;
+  box-shadow: 0 0 10px rgba(0, 122, 204, 0.3);
 }
+
+/* Remove the old hover-based opacity effects */
 
 .goal{
   width: 100%;
@@ -197,17 +190,17 @@ html,body{
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 2rem 3rem;
+  padding: 1.5rem 2rem; /* Reduced padding from 2rem 3rem */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem; /* Reduced gap from 2rem */
   transition: all 0.3s ease;
 }
 
 .description-title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   color: #333;
   text-align: center;
@@ -215,8 +208,8 @@ html,body{
 }
 
 .description-text {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 20px;
+  line-height: 1.4; /* Reduced line height from 1.5 to 1.4 */
   color: #666;
   text-align: center;
   margin: 0;
