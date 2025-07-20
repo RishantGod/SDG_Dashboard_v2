@@ -21,12 +21,28 @@ html,body{
   text-align: center;
 }
 
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 1rem 0 1.75rem 0;
+}
+
+.institutional-logo {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+  position: absolute;
+  left: 0;
+}
+
 .dashboard-title {
   text-align: center;
   font-size: 32px;
   font-weight: bold;
   color: #333;
-  margin: 1rem 0 0.5rem 0; /* Reduced margins from 2rem 0 1rem 0 */
+  margin: 0;
 }
 
 .dashboard {
@@ -56,7 +72,7 @@ html,body{
 
 .ban-section{
   width: 100%;
-  height: 260px; /* Reduced height from 300px to 260px */
+  height: 320px; /* Increased height from 260px to 320px */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -97,6 +113,35 @@ html,body{
 
 .ban-text {
   background-color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.progress-container {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #66BB6A);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.target-text {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
 }
 
 .bar-chart-container {

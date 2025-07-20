@@ -228,7 +228,7 @@ export default function BarChart({ selectedMetric = 'studentParticipation' }) {
                                 strokeWidth="1"
                                 style={{
                                     transition: isInitialRender 
-                                        ? 'height 0.8s ease-out 0.1s, y 0.8s ease-out 0.1s' 
+                                        ? 'height 2s ease-out 0.2s, y 1.2s ease-out 0.2s' 
                                         : 'height 0.6s ease, y 0.6s ease'
                                 }}
                             />

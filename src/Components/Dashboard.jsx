@@ -60,23 +60,32 @@ export default function Dashboard(){
 
   return (
     <>
-    <h1 className='dashboard-title'>Sustainable Development Goals Dashboard</h1>
+    <div className="header-section">
+      <img 
+        src="/assets/instituition_logo.png" 
+        alt="Institutional Logo" 
+        className="institutional-logo"
+      />
+      <h1 className='dashboard-title'>Sustainable Development Goals Dashboard</h1>
+    </div>
       <div className="dashboard">
        <div className='left-section'>
         <div className='ban-section'>
             <BAN 
             imgSrc={studentParticipationIcon}
-            value={displayTotals.studentParticipation}
+            value={displayTotals.studentParticipation.toLocaleString()}
             label="Student Participation"
             isSelected={selectedMetric === 'studentParticipation'}
             onClick={() => handleMetricClick('studentParticipation')}
+            isIndividualSDG={selectedSDG !== null}
             />
             <BAN 
             imgSrc={casProjectIcon}
-            value={displayTotals.casProjects}
+            value={displayTotals.casProjects.toLocaleString()}
             label="CAS Projects"
             isSelected={selectedMetric === 'casProjects'}
             onClick={() => handleMetricClick('casProjects')}
+            isIndividualSDG={selectedSDG !== null}
             />
             <BAN 
             imgSrc={fundsRaisedIcon}
@@ -84,6 +93,7 @@ export default function Dashboard(){
             label="Funds Raised"
             isSelected={selectedMetric === 'fundsRaised'}
             onClick={() => handleMetricClick('fundsRaised')}
+            isIndividualSDG={selectedSDG !== null}
             />
         </div>
         <div className='sdg-section'>

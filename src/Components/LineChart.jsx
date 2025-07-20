@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 
 export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentParticipation' }) {
     const containerRef = useRef();
+    const [isInitialRender, setIsInitialRender] = useState(true);
     const [dimensions, setDimensions] = useState({
         width: 500,
         height: 600,
@@ -35,6 +36,14 @@ export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentPar
         return () => window.removeEventListener('resize', updateDimensions);
     }, []);
 
+    // Handle initial render flag for animations
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsInitialRender(false);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [selectedMetric]); // Reset animation when metric changes
+
     // Calculate bounded dimensions
     const boundedWidth = dimensions.width - dimensions.marginLeft - dimensions.marginRight;
     const boundedHeight = dimensions.height - dimensions.marginTop - dimensions.marginBottom;
@@ -63,6 +72,18 @@ export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentPar
                 return `SDG ${sdgId} - Monthly Funds Raised`;
             default:
                 return `SDG ${sdgId} - Monthly Student Participation`;
+        }
+    };
+
+    // Dynamic y-axis label based on selected metric
+    const getYAxisLabel = () => {
+        switch(selectedMetric) {
+            case 'casProjects':
+                return 'Number of CAS projects';
+            case 'fundsRaised':
+                return 'Amount of funds raised';
+            default:
+                return 'Number of students';
         }
     };
     
@@ -131,6 +152,19 @@ export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentPar
                             stroke="#333"
                             strokeWidth="2"
                         />
+                        {/* Y axis label */}
+                        <text
+                            x={-50}
+                            y={boundedHeight / 2}
+                            textAnchor="middle"
+                            fontSize="14"
+                            fontWeight="bold"
+                            fontFamily="Lato, sans-serif"
+                            fill="#333"
+                            transform={`rotate(-90, -50, ${boundedHeight / 2})`}
+                        >
+                            {getYAxisLabel()}
+                        </text>
                         {/* Y axis ticks and labels */}
                         {yAxisTicks.map(tick => (
                             <g key={tick}>
@@ -194,10 +228,25 @@ export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentPar
                     </g>
 
                     {/* Area Fill */}
+                    <defs>
+                        <clipPath id={`areaClip-${sdgId}`}>
+                            <rect 
+                                x="0" 
+                                y="0" 
+                                width={isInitialRender ? 0 : boundedWidth} 
+                                height={boundedHeight}
+                                style={{
+                                    transition: 'width 1.5s ease-out 0.3s'
+                                }}
+                            />
+                        </clipPath>
+                    </defs>
+                    
                     <path
                         d={areaPath}
                         fill={sdgData.color || "#3498db"}
                         fillOpacity="0.3"
+                        clipPath={`url(#areaClip-${sdgId})`}
                         style={{
                             transition: 'd 0.6s ease'
                         }}
@@ -211,8 +260,12 @@ export default function LineChart({ sdgData, sdgId, selectedMetric = 'studentPar
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        strokeDasharray={isInitialRender ? `1000` : 'none'}
+                        strokeDashoffset={isInitialRender ? 1000 : 0}
                         style={{
-                            transition: 'd 0.6s ease'
+                            transition: isInitialRender 
+                                ? 'stroke-dashoffset 1.2s ease-out 0.1s' 
+                                : 'd 0.6s ease'
                         }}
                     />
 
