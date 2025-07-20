@@ -567,7 +567,7 @@
         "color":"#FD9D23",
         "action": "Introduce recycling stations",
         "description": "Color-coded recycling stations were installed across campus with clear signage for plastic, paper, metal, and compostable waste. Students conducted workshops on proper waste sorting and tracked waste reduction over time. The program supported SDG 12 (Responsible Consumption and Production) and created a culture of environmental responsibility.",
-        "image": "/assets/food-waste.svg",
+        "image": "/assets/11.png",
         "leader": "Ms. Red",
         "startDate": "2023-11-01",
         "location": "Campus Walkways"
@@ -619,7 +619,7 @@
         "color":"#BF8B2E",
         "action": "Plastic-Free Campus",
         "description": "A student council-led movement banned single-use plastic bottles, bags, and cutlery on campus. Reusable alternatives were provided, and awareness events were hosted to promote sustainable habits. This action aligned with SDG 14 (Life Below Water) and SDG 13 (Climate Action), helping reduce plastic pollution locally and globally.",
-        "image": "/assets/food-waste.svg",
+        "image": "/assets/12.png",
         "leader": "Mr. Yellow",
         "startDate": "2023-12-01",
         "location": "All Campus Areas"
@@ -671,7 +671,7 @@
         "color":"#3F7E44",
         "action": "Carbon Literacy via Greenscale",
         "description": "Students participated in Greenscale’s interactive learning modules to understand their carbon footprints and climate impact. Activities included quizzes, lifestyle tracking, and solution brainstorming. The program improved environmental knowledge and inspired climate action, aligning with SDG 13 (Climate Action) and SDG 4 (Quality Education) through experiential learning.",
-        "image": "/assets/food-waste.svg",
+        "image": "/assets/13.png",
         "leader": "Ms. Blue",
         "startDate": "2024-01-01",
         "location": "Online Platform"
@@ -723,7 +723,7 @@
         "color":"#1D97D9",
         "action": "Run clean-up event near local lake",
         "description": "Volunteers organized a community cleanup around a local lake, collecting plastic, glass, and other waste while raising awareness about ecosystem health. The event included workshops on pollution prevention and biodiversity. This hands-on effort supported SDG 15 (Life on Land) and SDG 6 (Clean Water and Sanitation).",
-        "image": "/assets/food-waste.svg",
+        "image": "/assets/14.png",
         "leader": "Mr. Orange",
         "startDate": "2024-02-01",
         "location": "Local Lake"
@@ -775,7 +775,7 @@
         "color":"#56C02A",
         "action": "Set up native plant gardens",
         "description": "Students planted native flora around campus to promote biodiversity, reduce water use, and attract pollinators. Informative signs explained ecological benefits. This sustainable landscaping initiative contributed to SDG 15 (Life on Land), SDG 13 (Climate Action), and created green spaces for learning and relaxation.",
-        "image": "/assets/food-waste.svg",
+        "image": "/assets/15.png",
         "leader": "Ms. Purple",
         "startDate": "2024-03-01",
         "location": "Campus Grounds"
@@ -827,7 +827,7 @@
         "color":"#13689D",
         "action": "Model UN",
         "description": "A school-wide Model UN simulated global climate negotiations and SDG planning sessions. Students represented countries, drafted resolutions, and practiced diplomacy. This experiential learning event developed global citizenship and aligned with SDG 17 (Partnerships for the Goals), encouraging cross-cultural understanding and cooperation on sustainability challenges.",
-        "image": "/assets/food-waste.svg",
+        "image": "/assets/16.png",
         "leader": "Mr. Gray",
         "startDate": "2024-04-01",
         "location": "Conference Room"

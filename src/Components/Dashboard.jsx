@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BAN from './BAN';
 import BarChart from './BarChart';
+import LineChart from './LineChart';
 import SDGBox from './SDGBox';
 import DescriptionBox from './DescriptionBox';
 import studentParticipationIcon from '../assets/student-participation.svg';
@@ -54,6 +55,16 @@ export default function Dashboard(){
 
   return (
     <>
+    <div className="sdg-color-bar">
+      {data.map((sdg) => (
+        <div
+          key={sdg.id}
+          className="sdg-color-cell"
+          style={{ backgroundColor: sdg.color }}
+          title={`SDG ${sdg.id}: ${sdg.action}`}
+        />
+      ))}
+    </div>
     <h1 className='dashboard-title'>Sustainable Development Goals Dashboard</h1>
       <div className="dashboard">
        <div className='left-section'>
@@ -82,7 +93,14 @@ export default function Dashboard(){
         </div>
        </div>
        <div className='right-section'>
-            <BarChart />
+            {hoveredSDG ? (
+              <LineChart 
+                sdgData={currentSDGData} 
+                sdgId={hoveredSDG}
+              />
+            ) : (
+              <BarChart />
+            )}
             <DescriptionBox 
               illustration={displayDetails.image}
               action_title={displayDetails.action}
