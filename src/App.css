@@ -14,8 +14,16 @@ html,body{
   width: 100%;
   height: 100%;
   margin: 2em;
-  padding: 2rem;
+  padding: 0 1rem;
   text-align: center;
+}
+
+.dashboard-title {
+  text-align: left;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
 .dashboard {
@@ -31,7 +39,7 @@ html,body{
   justify-content: space-between;
 
   align-items: center;
-  gap: 2rem;
+  gap: 1rem; /* Reduced gap from 2rem to 1rem */
   
 }
 
@@ -40,11 +48,12 @@ html,body{
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  /* gap: 1rem; */
+  gap: 1rem;
 }
 
 .ban-section{
   width: 100%;
+  height: 300px; /* Increased height for more square-like BANs */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,11 +63,13 @@ html,body{
 
 .ban {
   width: calc(33% - 1rem);
+  height: 100%; /* Take full height of ban-section */
   background-color: #fff;
+  border: 1px solid #ccc;
   display:flex;
   justify-content: start;
   align-items: center;
-  padding: 6rem 7rem 6rem 2rem ;
+  padding: 2rem; /* Increased padding for better proportions */
 }
 
 .ban-icon {
@@ -115,7 +126,7 @@ html,body{
 .box{
   width: 100%;
   display: flex;
-  background-color: rgba(231, 220, 220, 0.889);
+  /* background-color: rgba(231, 220, 220, 0.889); */
   border-radius: 5px;
   margin-top: 1rem;
   flex-wrap: wrap;
@@ -127,6 +138,7 @@ html,body{
   flex: 1 1 calc(15.666% - 10px); /* 100% / 6 = 16.666%, minus gap */
   max-width: calc(16.666% - 10px);
   display: flex;
+  border: 1px solid #ccc;
   justify-content: center;
   align-items: center;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -146,6 +158,7 @@ html,body{
 .description-box{
   width: 100%;
   height: 50%;
+  min-height: 400px; /* Fixed minimum height to prevent shifting */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -155,11 +168,51 @@ html,body{
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.description-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 0;
+}
+
+.description-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+.description-data-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description-data-points span {
+  font-weight: bold;
+  color: #333;
+}
+
+.description-data-points p {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
 }
 
 .description-image{
-  max-width: 200px;
-  max-height: 200px;
+  width: 150px; /* Fixed width */
+  height: 150px; /* Fixed height */
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: contain; /* Maintain aspect ratio while fitting within bounds */
+  object-position: center; /* Center the image */
+  display: block; /* Ensure consistent display */
 }
 
 .description-data{

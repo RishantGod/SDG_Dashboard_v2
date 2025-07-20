@@ -1,24 +1,25 @@
 import React from 'react';
-import imageSrc from '../assets/food-waste.svg'; // Adjust the path as necessary
 
-export default function DescriptionBox(){
+
+
+export default function DescriptionBox({illustration, action_title, action_description, ledBy, date, location}) {
     return (
         <div className='description-box'>
-            <img className='description-image' src={imageSrc} alt="Food Waste" />
-            <h2 className='description-title'>Food Waste</h2>
-            <p className='description-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fuga itaque nemo nisi, id assumenda doloremque ipsa aut voluptas blanditiis repellat deserunt consequuntur minima ab neque odio eius quasi obcaecati est! Praesentium hic nesciunt blanditiis esse corporis, qui fuga nisi quam atque iste autem maiores ipsum corrupti architecto minima cupiditate!</p>
+            <img className='description-image' src={illustration} alt={action_title} />
+            <h2 className='description-title'>{action_title}</h2>
+            <p className='description-text'>{action_description}</p>
             <div className='description-data'>
                 <div className='description-data-points'>
-                    <span>5</span>
-                    <p>Projects</p>
+                    <p>Led by</p>
+                    <span>{ledBy}</span>
                 </div>
                 <div className='description-data-points'>
-                    <span>5</span>
-                    <p>Projects</p>
+                    <p>Date</p>
+                    <span>{date}</span>
                 </div>
                 <div className='description-data-points'>
-                    <span>5</span>
-                    <p>Projects</p>
+                    <p>Location</p>
+                    <span>{location}</span>
                 </div>
             </div>
         </div>
