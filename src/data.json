@@ -46,7 +46,7 @@
         "color": "#E5243B",
         "action": "Fundraiser for local shelters",
         "description": "Students organized a charity drive to support local homeless shelters by collecting funds, clothing, and hygiene supplies. They hosted bake sales, art auctions, and donation booths across campus, raising awareness about housing insecurity and encouraging community involvement, aligning with SDG 1 (No Poverty) and SDG 11 (Sustainable Cities and Communities).",
-        "image": "/assets/01.png",
+        "image": "assets/01.png",
         "leader": "Mr Smith",
         "startDate": "2023-01-01",
         "location": "Community Center"
@@ -99,7 +99,7 @@
         "color":"#DDA83A",
         "action": "Reduce food waste at campus",
         "description": "A student-led initiative audited cafeteria food waste and implemented portion control, food sharing stations, and awareness posters. Composting bins and partnerships with food banks helped redirect surplus food. The project raised awareness about hunger and waste, addressing SDG 2 (Zero Hunger) and SDG 12 (Responsible Consumption and Production).",
-        "image": "/assets/02.png",
+        "image": "assets/02.png",
         "leader": "Ms Johnson",
         "startDate": "2023-02-01",
         "location": "Cafeteria"
@@ -151,7 +151,7 @@
         "color":"#4D9F38",
         "action": "Mental Health Awareness Week",
         "description": "The campus hosted a dedicated week of mental health workshops, peer support circles, expert-led talks, yoga, and mindfulness activities. Resources for counseling were widely shared. The initiative encouraged open dialogue and reduced stigma, contributing to SDG 3 (Good Health and Well-Being) and SDG 4 (Quality Education).",
-        "image": "/assets/03.png",
+        "image": "assets/03.png",
         "leader": "Dr. Lee",
         "startDate": "2023-03-01",
         "location": "Main Hall"
@@ -203,7 +203,7 @@
         "color":"#C5192D",
         "action": "Peer learning sessions",
         "description": "Senior students volunteered to tutor juniors in difficult subjects. Sessions included group problem-solving, exam prep, and mentorship. This inclusive approach strengthened academic performance and built community, directly addressing SDG 4 (Quality Education) and fostering SDG 10 (Reduced Inequalities) by supporting students with varying academic backgrounds.",
-        "image": "/assets/04.png",
+        "image": "assets/04.png",
         "leader": "Ms. Patel",
         "startDate": "2023-04-01",
         "location": "Library Study Room"
@@ -255,7 +255,7 @@
         "color":"#FF3A21",
         "action": "Workshops on gender inclusion",
         "description": "Interactive workshops addressed gender identity, equality, and unconscious bias through storytelling, role-plays, and expert sessions. Students discussed challenges and proposed solutions to create an inclusive environment. These workshops aligned with SDG 5 (Gender Equality) and SDG 10 (Reduced Inequalities), promoting respect and empathy across campus.",
-        "image": "/assets/05.png",
+        "image": "assets/05.png",
         "leader": "Ms. Thompson",
         "startDate": "2023-05-01",
         "location": "Auditorium"
@@ -307,7 +307,7 @@
         "color":"#27BDE2",
         "action": "Save Water poster campaign",
         "description": "Students designed informative and artistic posters about water conservation and displayed them in restrooms, kitchens, and public spaces. Messages focused on reducing wastage, fixing leaks, and sustainable habits. The campaign aligned with SDG 6 (Clean Water and Sanitation) and encouraged daily behavioral changes on campus.",
-        "image": "/assets/06.png",
+        "image": "assets/06.png",
         "leader": "Mr. Green",
         "startDate": "2023-06-01",
         "location": "Campus Restrooms"
@@ -359,7 +359,7 @@
         "color":"#FCC30A",
         "action": "Switch to LED lights",
         "description": "The campus replaced fluorescent and incandescent lights with energy-efficient LED bulbs in classrooms, dormitories, and corridors. This retrofit significantly reduced energy consumption and costs. Students tracked energy savings and created an energy dashboard, aligning with SDG 7 (Affordable and Clean Energy) and SDG 13 (Climate Action).",
-        "image": "/assets/07.png",
+        "image": "assets/07.png",
         "leader": "Ms. White",
         "startDate": "2023-07-01",
         "location": "All Campus Buildings"
@@ -411,7 +411,7 @@
         "color":"#A21941",
         "action": "Offer fair trade food",
         "description": "The cafeteria introduced fair trade-certified items including chocolate, coffee, and fruit. Students learned about global supply chains, farmer rights, and ethical consumerism through displays and tasting events. This action supported SDG 8 (Decent Work and Economic Growth) and SDG 12 (Responsible Consumption and Production).",
-        "image": "/assets/08.png",
+        "image": "assets/08.png",
         "leader": "Mr. Brown",
         "startDate": "2023-08-01",
         "location": "Cafeteria"
@@ -463,7 +463,7 @@
         "color":"#FD6925",
         "action": "Student challenge for sustainable tech ideas",
         "description": "An innovation competition invited students to propose tech-based sustainability solutions—solar-powered devices, water filters, recycling apps, and more. Winning ideas were incubated for further development. This initiative promoted SDG 9 (Industry, Innovation, and Infrastructure) and SDG 13 (Climate Action) by empowering student entrepreneurship for environmental impact.",
-        "image": "/assets/09.png",
+        "image": "assets/09.png",
         "leader": "Ms. Green",
         "startDate": "2023-09-01",
         "location": "Innovation Lab"
@@ -515,7 +515,7 @@
         "color":"#DD1467",
         "action": "Accessibility Audits",
         "description": "Students conducted campus-wide audits to assess accessibility for people with disabilities. They identified barriers, recommended inclusive design improvements, and submitted findings to administration. This initiative promoted awareness, inclusive infrastructure, and equal participation, supporting SDG 10 (Reduced Inequalities) and SDG 11 (Sustainable Cities and Communities).",
-        "image": "/assets/10.png",
+        "image": "assets/10.png",
         "leader": "Mr. Blue",
         "startDate": "2023-10-01",
         "location": "Campus Grounds"
@@ -567,7 +567,7 @@
         "color":"#FD9D23",
         "action": "Introduce recycling stations",
         "description": "Color-coded recycling stations were installed across campus with clear signage for plastic, paper, metal, and compostable waste. Students conducted workshops on proper waste sorting and tracked waste reduction over time. The program supported SDG 12 (Responsible Consumption and Production) and created a culture of environmental responsibility.",
-        "image": "/assets/11.png",
+        "image": "assets/11.png",
         "leader": "Ms. Red",
         "startDate": "2023-11-01",
         "location": "Campus Walkways"
@@ -619,7 +619,7 @@
         "color":"#BF8B2E",
         "action": "Plastic-Free Campus",
         "description": "A student council-led movement banned single-use plastic bottles, bags, and cutlery on campus. Reusable alternatives were provided, and awareness events were hosted to promote sustainable habits. This action aligned with SDG 14 (Life Below Water) and SDG 13 (Climate Action), helping reduce plastic pollution locally and globally.",
-        "image": "/assets/12.png",
+        "image": "assets/12.png",
         "leader": "Mr. Yellow",
         "startDate": "2023-12-01",
         "location": "All Campus Areas"
@@ -671,7 +671,7 @@
         "color":"#3F7E44",
         "action": "Carbon Literacy via Greenscale",
         "description": "Students participated in Greenscale’s interactive learning modules to understand their carbon footprints and climate impact. Activities included quizzes, lifestyle tracking, and solution brainstorming. The program improved environmental knowledge and inspired climate action, aligning with SDG 13 (Climate Action) and SDG 4 (Quality Education) through experiential learning.",
-        "image": "/assets/13.png",
+        "image": "assets/13.png",
         "leader": "Ms. Blue",
         "startDate": "2024-01-01",
         "location": "Online Platform"
@@ -723,7 +723,7 @@
         "color":"#1D97D9",
         "action": "Run clean-up event near local lake",
         "description": "Volunteers organized a community cleanup around a local lake, collecting plastic, glass, and other waste while raising awareness about ecosystem health. The event included workshops on pollution prevention and biodiversity. This hands-on effort supported SDG 15 (Life on Land) and SDG 6 (Clean Water and Sanitation).",
-        "image": "/assets/14.png",
+        "image": "assets/14.png",
         "leader": "Mr. Orange",
         "startDate": "2024-02-01",
         "location": "Local Lake"
@@ -775,7 +775,7 @@
         "color":"#56C02A",
         "action": "Set up native plant gardens",
         "description": "Students planted native flora around campus to promote biodiversity, reduce water use, and attract pollinators. Informative signs explained ecological benefits. This sustainable landscaping initiative contributed to SDG 15 (Life on Land), SDG 13 (Climate Action), and created green spaces for learning and relaxation.",
-        "image": "/assets/15.png",
+        "image": "assets/15.png",
         "leader": "Ms. Purple",
         "startDate": "2024-03-01",
         "location": "Campus Grounds"
@@ -827,7 +827,7 @@
         "color":"#13689D",
         "action": "Model UN",
         "description": "A school-wide Model UN simulated global climate negotiations and SDG planning sessions. Students represented countries, drafted resolutions, and practiced diplomacy. This experiential learning event developed global citizenship and aligned with SDG 17 (Partnerships for the Goals), encouraging cross-cultural understanding and cooperation on sustainability challenges.",
-        "image": "/assets/16.png",
+        "image": "assets/16.png",
         "leader": "Mr. Gray",
         "startDate": "2024-04-01",
         "location": "Conference Room"
@@ -879,7 +879,7 @@
         "color":"#19476A",
         "action": "Partner with a local NGO",
         "description": "The school formed a partnership with a nearby NGO focused on waste management and environmental education. Students volunteered, co-created workshops, and supported the NGO’s mission through fundraising and advocacy. This initiative enhanced community engagement and aligned with SDG 17 (Partnerships for the Goals) and SDG 11.",
-        "image": "/assets/17.png",
+        "image": "assets/17.png",
         "leader": "Mr. Yellow",
         "startDate": "2024-05-01",
         "location": "Community Center"
